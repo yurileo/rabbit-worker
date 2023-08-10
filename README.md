@@ -1,4 +1,4 @@
-# Демонcтрационный проект по взаимодействию двух микросервисов с использование брокера сообщений RabbitMQ.
+## Демонcтрационный проект по взаимодействию двух микросервисов с использование брокера сообщений RabbitMQ.
 
 Использованные зависимости
 - структура репозитория - monorepo NX
@@ -7,18 +7,17 @@
 - тестирование - jest
 - валидация - class-validator
 
-## Приложение api - обработка входящих http запросов, отправка их через RabbitMQ в приложение auth, обработка ответа.
+### Приложение api - обработка входящих http запросов, отправка их через RabbitMQ в приложение auth, обработка ответа.
 
 `apps/api/src/app/controllers/auth.controller.ts` - контроллер для обработки входящих http запросов 
 
-## Приложение auth - обработка запросов через RabbitMQ.
+### Приложение auth - обработка запросов через RabbitMQ.
 
-`apps/auth/src/app/auth/auth.controller.ts` - контроллер для получения запросов через Rabbit
-`apps/auth/src/app/auth/auth.service.ts` - сервис проверки логина-пароля
-`apps/auth/src/app/auth/auth.controller.spec.ts` - тесты для приложения
+- `apps/auth/src/app/auth/auth.controller.ts` - контроллер для получения запросов через Rabbit
+- `apps/auth/src/app/auth/auth.service.ts` - сервис проверки логина-пароля
+- `apps/auth/src/app/auth/auth.controller.spec.ts` - тесты для приложения
 
-
-## Запуск на локальной машине
+### Запуск на локальной машине
 
 - прописываем в `envs/.api.env` и `envs/.auth.env` адрес сервера RabbitMQ
 - устанавливаем зависимости проекта `npm i` и глобально `npm i -g nx`
@@ -27,8 +26,7 @@
 - в body - {"login":"xyz","password":"123"} - успешный запрос
 - в body - {"login":"xyz","password":""} - ошибка
 
-
-## Запуск через докер
+### Запуск через докер
 
 - `docker build . -t rabbit-worker` - собираем контейнер
 - `docker run --rm -it -p 5555:5672 rabbitmq:3-management` - запускаем рэббит
