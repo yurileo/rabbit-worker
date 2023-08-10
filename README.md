@@ -9,7 +9,7 @@
 
 ### Приложение api - обработка входящих http запросов, отправка их через RabbitMQ в приложение auth, обработка ответа.
 
-`apps/api/src/app/controllers/auth.controller.ts` - контроллер для обработки входящих http запросов 
+- `apps/api/src/app/controllers/auth.controller.ts` - контроллер для обработки входящих http запросов 
 
 ### Приложение auth - обработка запросов через RabbitMQ.
 
@@ -28,13 +28,13 @@
 
 ### Запуск через докер
 
-- `docker build . -t rabbit-worker` - собираем контейнер
+- `docker build . -t rabbit-worker` - собираем контейнер с приложением
 - `docker run --rm -it -p 5555:5672 rabbitmq:3-management` - запускаем рэббит
 - `docker run --rm -it rabbit-worker nx serve auth` - запускаем микросервис аутентификации
 - `docker run --rm -it -p 3333:3333 rabbit-worker nx serve api` - запускаем микросервис api
-- `curl --header "Content-Type: application/json" \
-  --request POST \
-  --data '{"login":"xyz","password":"123"}' \
+- `curl --header "Content-Type: application/json" 
+  --request POST 
+  --data '{"login":"xyz","password":"123"}' 
   http://localhost:3333/api/auth/login` - вызов api
 
 - `docker run --rm -it rabbit-worker nx test auth` - запуск тестов для сервиса аутентификации
