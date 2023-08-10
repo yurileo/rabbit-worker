@@ -16,11 +16,11 @@ export class AuthController {
                 UserLogin.topic,
                 dto,
             );
-            this.logger.verbose('After Rabbit request');
+            this.logger.log('Succesful Rabbit request finished');
             return response;
         } catch (e) {
             if (e instanceof Error) {
-                this.logger.verbose('Rabbit request error');
+                this.logger.error('Rabbit request error');
                 throw new UnauthorizedException(e.message);
             }
         }

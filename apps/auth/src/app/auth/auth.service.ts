@@ -6,7 +6,7 @@ export class AuthService {
     private readonly logger = new Logger('AuthService');
 
     login(dto: UserLogin.Request): UserLogin.Response {
-        this.logger.verbose('Processing Rabbit request');
+        this.logger.verbose(`Processing login request of user ${dto.login}`);
 
         if (!dto.login || !dto.password) {
             throw new Error('Login or Password empty');
