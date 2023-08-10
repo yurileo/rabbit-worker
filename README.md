@@ -23,8 +23,9 @@
 - устанавливаем зависимости проекта `npm i` и глобально `npm i -g nx`
 - запускаем микросервисы `nx serve auth` и `nx serve api`
 - в Postman вызываем POST http://localhost:3333/api/auth/login
-- в body - {"login":"xyz","password":"123"} - успешный запрос
-- в body - {"login":"xyz","password":""} - ошибка
+- в body - `{"login":"xyz","password":"123"}` - успешный запрос
+- в body - `{"login":"xyz","password":""}` - ошибка
+- `nx test auth --skip-nx-cache` - запуск тестов
 
 ### Запуск через докер
 
@@ -37,4 +38,4 @@
   --data '{"login":"xyz","password":"123"}' 
   http://localhost:3333/api/auth/login` - вызов api
 
-- `docker run --rm -it rabbit-worker nx test auth` - запуск тестов для сервиса аутентификации
+- `docker run --rm -it rabbit-worker nx test auth --skip-nx-cache` - запуск тестов для сервиса аутентификации
