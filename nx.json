@@ -56,5 +56,5 @@
     ],
     "sharedGlobals": []
   },
-  "defaultProject": "worker"
+  "defaultProject": "auth"
 }

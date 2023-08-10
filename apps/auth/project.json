@@ -1,19 +1,23 @@
 {
-  "name": "worker",
+  "name": "auth",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/worker/src",
+  "sourceRoot": "apps/auth/src",
   "projectType": "application",
   "targets": {
     "build": {
       "executor": "@nrwl/webpack:webpack",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "target": "node",
         "compiler": "tsc",
-        "outputPath": "dist/apps/worker",
-        "main": "apps/worker/src/main.ts",
-        "tsConfig": "apps/worker/tsconfig.app.json",
-        "assets": ["apps/worker/src/assets"]
+        "outputPath": "dist/apps/auth",
+        "main": "apps/auth/src/main.ts",
+        "tsConfig": "apps/auth/tsconfig.app.json",
+        "assets": [
+          "apps/auth/src/assets"
+        ]
       },
       "configurations": {
         "production": {
@@ -22,8 +26,8 @@
           "inspect": false,
           "fileReplacements": [
             {
-              "replace": "apps/worker/src/environments/environment.ts",
-              "with": "apps/worker/src/environments/environment.prod.ts"
+              "replace": "apps/auth/src/environments/environment.ts",
+              "with": "apps/auth/src/environments/environment.prod.ts"
             }
           ]
         }
@@ -32,26 +36,32 @@
     "serve": {
       "executor": "@nrwl/js:node",
       "options": {
-        "buildTarget": "worker:build"
+        "buildTarget": "auth:build"
       },
       "configurations": {
         "production": {
-          "buildTarget": "worker:build:production"
+          "buildTarget": "auth:build:production"
         }
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/worker/**/*.ts"]
+        "lintFilePatterns": [
+          "apps/auth/**/*.ts"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/worker"],
+      "outputs": [
+        "coverage/apps/auth"
+      ],
       "options": {
-        "jestConfig": "apps/worker/jest.config.ts",
+        "jestConfig": "apps/auth/jest.config.ts",
         "passWithNoTests": true
       }
     }
